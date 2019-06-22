@@ -33,5 +33,5 @@
   },
   "devDependencies": {
     "enzyme": "^3.10.0"
-  },
+  }
 }
