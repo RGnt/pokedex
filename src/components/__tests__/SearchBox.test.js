@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import SearchBox from '../SearchBox';
 import { util } from 'node-forge';
@@ -7,7 +7,11 @@ import { util } from 'node-forge';
 
 let wrapper;
 beforeEach(() => {
-    wrapper = shallow(<SearchBox />);
+    wrapper = mount(<SearchBox />);
+});
+
+afterEach(() => {
+    wrapper.unmount();
 });
 
 it('exists', () => {
@@ -29,11 +33,4 @@ describe('SearchBar form', () => {
         expect(wrapper.find('input').prop('value')).toEqual('bulbasaur');
     });
 
-    it('empties text area on submit', () => {
-        wrapper.find('input').simulate('change', { target: { value: 'bulbasaur' } });
-        wrapper.update();
-        wrapper.find('form').simulate('submit', { preventDefault: () => { } });
-        wrapper.update();
-        expect(wrapper.find('input').prop('value')).toEqual('');
-    });
 });
