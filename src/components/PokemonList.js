@@ -5,7 +5,7 @@ export default class PokemonList extends React.Component {
     render() {
         return (
             <div>
-                <PokemonCard />
+                {this.props.pokemon !== undefined ? <PokemonCard pokemon={this.props.pokemon} /> : <p></p>}
             </div>
         );
     };
