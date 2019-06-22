@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './Header';
+import PokemonList from './PokemonList';
 export default class App extends React.Component {
     state = {
         term: ''
@@ -12,6 +13,7 @@ export default class App extends React.Component {
         return (
             <div>
                 <Header onSearchCB={this.getSearchTerm} title="PokeDex" />
+                <PokemonList />
             </div>
         );
     };
