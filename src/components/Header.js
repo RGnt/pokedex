@@ -1,10 +1,12 @@
 import React from 'react';
+import SearchBox from './SearchBox';
 
 const Header = (props) => {
 
     return (
         <div>
             <h1><a href="/">{props.title}</a></h1>
+            <SearchBox searchCB={props.onSearchCB} />
         </div>
     );
 };
