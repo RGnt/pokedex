@@ -4,9 +4,8 @@ import SearchBox from './SearchBox';
 const Header = (props) => {
 
     return (
-        <div>
+        <div className="ui segment menu">
             <h1><a href="/">{props.title}</a></h1>
-            <SearchBox searchCB={props.onSearchCB} />
         </div>
     );
 };

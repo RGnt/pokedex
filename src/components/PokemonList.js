@@ -2,10 +2,17 @@ import React from 'react';
 import PokemonCard from './PokemonCard';
 
 export default class PokemonList extends React.Component {
+
     render() {
+        console.log(this.props);
         return (
-            <div>
-                {this.props.pokemon !== undefined ? <PokemonCard pokemon={this.props.pokemon} /> : <p></p>}
+            <div className="ui segment">
+                <div className="ui cards">
+                    {this.props.pokemon.map(pokemon => {
+                        console.log(pokemon.url.substring(25));
+                        return <PokemonCard url={pokemon.url} key={pokemon.name} />
+                    })}
+                </div>
             </div>
         );
     };

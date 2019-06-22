@@ -17,7 +17,7 @@ class SearchBox extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="ui segment menu">
                 <form onSubmit={this.handleSubmit}>
                     <input value={this.state.term} onChange={this.handleChange} type="text" />
                     <div>
