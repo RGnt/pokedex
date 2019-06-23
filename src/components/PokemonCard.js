@@ -1,5 +1,6 @@
 import React from 'react';
 import pokeapi from '../api/pokeapi';
+import "./PokemonCard.css";
 
 export default class PokemonCard extends React.Component {
     state = {
@@ -40,30 +41,36 @@ export default class PokemonCard extends React.Component {
         if (this.state.pokemon !== undefined) {
             return (
 
-                <div>
-                    <div>
-                        <img src={this.state.pokemon.sprites.front_default} alt={this.state.pokemon.name} />
+                <div className="card">
+                    <div className="cardHeader">
+                        <h2 className="cardHeaderName">{this.state.pokemon.name.charAt(0).toUpperCase() + this.state.pokemon.name.slice(1)}</h2>
+                        <h3 className="cardHeaderNumber">{`#${this.state.pokemon.id}`}</h3>
                     </div>
-                    <div>
-                        <div>{this.state.pokemon.name.charAt(0).toUpperCase() + this.state.pokemon.name.slice(1)}</div>
-                        <div>#{this.state.pokemon.id}</div>
-                        <div>
-                            <div>
-                                <div>
-                                    <div><h4>Abilities:</h4></div>
-                                    <div></div>
-                                    {this.state.pokemon.stats.map((stat) => <div key={stat.stat.name}>{this.abbreviateName(stat.stat.name)}: {stat.base_stat}</div>)}
-                                </div>
-                            </div>
-                            <div>
-                                <div>
-                                    <div><h4>Type(s):</h4></div>
-                                    <div></div>
-                                    {this.state.pokemon.types.map((type) => <div key={type.type.name}>{type.type.name}</div>)}
-                                </div>
-                            </div>
+                    <div className="cardBody">
+
+                        <div className="cardImage" >
+                            <img src={this.state.pokemon.sprites.front_default} alt={this.state.pokemon.name} />
+                        </div>
+
+                        <div className="cardStats">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th colSpan="2"><h3>Stats:</h3></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.state.pokemon.stats.map((stat) => <tr key={stat.stat.name} className="statRow"> <td>{this.abbreviateName(stat.stat.name)}:</td> <td>{stat.base_stat}</td></tr>)}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+
+
+                    <div className="cardTypes">
+                        <div>{this.state.pokemon.types.map((type) => <span key={type.type.name} className={`typeFlair ${type.type.name}`}>{type.type.name}</span>)}</div>
+                    </div>
+
                 </div>
 
             )

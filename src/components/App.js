@@ -2,6 +2,8 @@ import React from 'react';
 import pokeapi from '../api/pokeapi'
 import Header from './Header';
 import PokemonList from './PokemonList';
+import './App.css';
+
 export default class App extends React.Component {
     state = {
         pokemon: [],
