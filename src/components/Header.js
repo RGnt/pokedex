@@ -4,7 +4,7 @@ import SearchBox from './SearchBox';
 const Header = (props) => {
 
     return (
-        <div className="ui segment menu">
+        <div>
             <h1><a href="/">{props.title}</a></h1>
         </div>
     );

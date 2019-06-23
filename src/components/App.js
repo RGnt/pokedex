@@ -23,7 +23,7 @@ export default class App extends React.Component {
     }
     render() {
         return (
-            <div className="ui segment">
+            <div>
                 <Header onSearchCB={this.getSearchTerm} title="PokeDex" />
                 <PokemonList pokemon={this.state.pokemon} />
             </div>
