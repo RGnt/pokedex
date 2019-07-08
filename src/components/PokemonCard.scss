@@ -18,14 +18,15 @@
     border: 1px solid rgba(0,0,0,0.7);
     border-radius: 10px;
     box-shadow: 3px 2px 5px rgba(0,0,0,0.5);
-    background-color:#D9D23C;
+    background-color:rgba(217,210,10, 0.8);
+    //background: #ff2800;
 
     .cardInner {
         width: 95%;
         height: 95%;
         display: flex;
         flex-direction: column;
-        box-shadow: inset 6px 6px 200px 2px rgba(0,0,0,0.69);
+        box-shadow: inset 6px 6px 200px 2px rgba(0,0,0,0.4);
         border: 1px solid #333;
 
         .cardHeader {
@@ -47,12 +48,14 @@
 
             .cardImage {
                 display: flex;
+                background:rgba(255,255,255,0.3);
+                border-radius: 3px;
                 justify-content: center;
                 align-items: center;
-                box-shadow: 3px 2px 5px rgba(0,0,0,0.5);
+                //box-shadow: 3px 2px 5px rgba(0,0,0,0.5);
                 width: 104px;
                 height: 104px;
-                border: 1px solid black;
+                border: 1px solid rgba(255,255,255, 0.4);
                 margin: 0.4rem;
             }
             .cardTypes {

@@ -19,7 +19,7 @@ export default class App extends React.Component {
 
     async componentDidMount() {
         const response = await pokeapi.get(`/pokemon/`, {
-            params: { limit: '151' }
+            params: { limit: '251' }
         });
         this.setState({ pokemon: response.data.results })
     }
