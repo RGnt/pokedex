@@ -1,6 +1,7 @@
 import React from 'react';
 import pokeapi from '../api/pokeapi';
-import "./PokemonCard.css";
+import "./PokemonCard.scss";
+import variables from './variables.scss';
 
 export default class PokemonCard extends React.Component {
     state = {
@@ -36,18 +37,38 @@ export default class PokemonCard extends React.Component {
             }
         }
     }
+
+    // Refactor: move to helper file
+    createGradient = (color1, color2) => ({"background": `linear-gradient( -45deg, ${color1}, ${color2})`})
+    capitalize = (input) => {
+        return input.charAt(0).toUpperCase() + input.slice(1)
+    }
+
+    createColorName = (type) => {
+        return "color"+this.capitalize(type);
+    }
+    createHeaderColor = (types) => {
+        if(types.length > 1) {
+            //console.log(this.createGradient(variables[this.createColorName(types[0].type.name)], variables[this.createColorName(types[1].type.name)]))
+            return this.createGradient(variables[this.createColorName(types[0].type.name)], variables[this.createColorName(types[1].type.name)]);
+        } else {
+            //console.log("should be single color")
+            //console.log({"background": `${this.createColorName(types[0].type.name)}`})
+            return ({"background": variables[this.createColorName(types[0].type.name)]})
+        }
+    }
+    // Refactor: end
     render() {
-        console.log(this.state.pokemon)
+        //console.log(this.state.pokemon)
         if (this.state.pokemon !== undefined) {
             return (
 
                 <div className="card">
-                    <div className="cardHeader">
-                        <h2 className="cardHeaderName">{this.state.pokemon.name.charAt(0).toUpperCase() + this.state.pokemon.name.slice(1)}</h2>
+                    <div className="cardHeader" style={this.createHeaderColor(this.state.pokemon.types)}>
+                        <h2 className="cardHeaderName">{this.capitalize(this.state.pokemon.name)}</h2>
                         <h3 className="cardHeaderNumber">{`#${this.state.pokemon.id}`}</h3>
                     </div>
                     <div className="cardBody">
-
                         <div className="cardImage" >
                             <img src={this.state.pokemon.sprites.front_default} alt={this.state.pokemon.name} />
                         </div>

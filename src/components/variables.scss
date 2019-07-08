@@ -1,0 +1,37 @@
+$color-ghost: #6666bb;
+$color-ice: #66ccff;
+$color-steel: #aaaabb;
+$color-rock: #bbaa66;
+$color-fighting: #bb5544;
+$color-fairy: #ee99ee;
+$color-ground: #ddbb55;
+$color-psychic: #ff5599;
+$color-electric: #ffcc33;
+$color-normal: #aaaa99;
+$color-bug: #aabb22;
+$color-water: #3399ff;
+$color-dragon: #7766ee;
+$color-flying: #8899ff;
+$color-fire: #ff4422;
+$color-poison: #aa5599;
+$color-grass: #77cc55;
+
+:export {
+    colorGhost: $color-ghost;
+    colorIce: $color-ice;
+    colorSteel: $color-steel;
+    colorRock: $color-rock;
+    colorFighting: $color-fighting;
+    colorFairy: $color-fairy;
+    colorGround: $color-ground;
+    colorPsychic: $color-psychic;
+    colorElectric: $color-electric;
+    colorNormal: $color-normal;
+    colorBug: $color-bug;
+    colorWater: $color-water;
+    colorDragon: $color-dragon;
+    colorFlying: $color-flying;
+    colorFire: $color-fire;
+    colorPoison: $color-poison;
+    colorGrass: $color-grass;
+}

@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .card {
     display: grid;
     grid-template-columns: 98px 95px;
@@ -8,31 +10,34 @@
     border: 1px solid rgba(0,0,0,0.7);
     border-radius: 10px;
     box-shadow: 3px 2px 5px rgba(0,0,0,0.5);
-    background-color: rgba(170,170,187,0.2);
+    background-color:rgba(170,170,187,0.2);
+    
+    .cardHeader {
+        grid-column: span 2;
+        grid-row: span 1;
+        display: flex;
+        justify-content: space-between;
+        padding: 2px;
+    }
+    
+    .cardBody {
+        grid-column: span 2;
+        grid-row: span 1;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .cardTypes {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        grid-column: span 2;
+        grid-row: span 1;
+    }
 }
 
-.cardHeader {
-    grid-column: span 2;
-    grid-row: span 1;
-    display: flex;
-    justify-content: space-between;
-    padding: 2px;
-}
 
-.cardBody {
-    grid-column: span 2;
-    grid-row: span 1;
-    display: flex;
-    justify-content: space-between;
-}
 
-.cardTypes {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    grid-column: span 2;
-    grid-row: span 1;
-}
 
 .ch-left-elem {
     justify-content: left;
@@ -64,7 +69,6 @@ tr {
     text-align: left;
     font-size: .85rem;
 }
-
 .grass {
     background-color: #77cc55;
 }
@@ -84,23 +88,18 @@ tr {
 .dragon {
     background-color: #7766ee;
 }
-
 .water {
     background-color: #3399ff;
 }
-
 .bug {
     background-color: #aabb22;
 }
-
 .normal {
     background-color: #aaaa99;
 }
-
 .electric {
     background-color: #ffcc33;
 }
-
 .psychic {
     background-color: #ff5599;
 }
@@ -108,19 +107,15 @@ tr {
 .ground {
     background-color: #ddbb55;
 }
-
 .fairy {
     background-color: #ee99ee;
 }
-
 .fighting {
     background-color: #bb5544;
 }
-
 .rock {
     background-color: #bbaa66;
 }
-
 .steel {
     background-color: #aaaabb;
 }
@@ -128,7 +123,6 @@ tr {
 .ghost {
     background-color: #6666bb;
 }
-
 .ice {
     background-color: #66ccff;
 }

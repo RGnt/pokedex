@@ -10,7 +10,7 @@ export default class PokemonList extends React.Component {
             <div>
                 <div className="cardContainer">
                     {this.props.pokemon.map(pokemon => {
-                        console.log(pokemon.url.substring(25));
+                        //console.log(pokemon.url.substring(25));
                         return <PokemonCard url={pokemon.url} key={pokemon.name} />
                     })}
                 </div>
