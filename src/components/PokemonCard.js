@@ -64,34 +64,21 @@ export default class PokemonCard extends React.Component {
             return (
 
                 <div className="card">
-                    <div className="cardHeader" style={this.createHeaderColor(this.state.pokemon.types)}>
+                    <div className="cardInner" style={this.createHeaderColor(this.state.pokemon.types)}>
+                    <div className="cardHeader">
                         <h2 className="cardHeaderName">{this.capitalize(this.state.pokemon.name)}</h2>
-                        <h3 className="cardHeaderNumber">{`#${this.state.pokemon.id}`}</h3>
                     </div>
-                    <div className="cardBody">
-                        <div className="cardImage" >
-                            <img src={this.state.pokemon.sprites.front_default} alt={this.state.pokemon.name} />
-                        </div>
+                        <div className="cardBody">
+                            <div className="cardImage" >
+                                <img src={this.state.pokemon.sprites.front_default} alt={this.state.pokemon.name} />
+                            </div>
 
-                        <div className="cardStats">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th colSpan="2"><h3>Stats:</h3></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.state.pokemon.stats.map((stat) => <tr key={stat.stat.name} className="statRow"> <td>{this.abbreviateName(stat.stat.name)}:</td> <td>{stat.base_stat}</td></tr>)}
-                                </tbody>
-                            </table>
+                            <div className="cardTypes">
+                                <div>{this.state.pokemon.types.map((type) => <span key={type.type.name} className="typeFlair">{type.type.name}</span>)}</div>
+                            </div>
+                        <div class="set"><h3 className="cardHeaderNumber">Gen 1: {`#${this.state.pokemon.id}`}/151</h3></div>
                         </div>
                     </div>
-
-
-                    <div className="cardTypes">
-                        <div>{this.state.pokemon.types.map((type) => <span key={type.type.name} className={`typeFlair ${type.type.name}`}>{type.type.name}</span>)}</div>
-                    </div>
-
                 </div>
 
             )
