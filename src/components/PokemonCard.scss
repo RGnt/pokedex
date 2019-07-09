@@ -35,12 +35,13 @@
             font-family: "Roboto Condensed";
             display: flex;
             justify-content: center;
-            color: #fff;
+            color: #333;
             padding: 0.2rem 1rem;
-            font-size: 1.1rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            font-size: 1.2rem;
+            //text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
             margin-bottom: 0.2rem;
             border-bottom: 1px dotted rgba(0,0,0,0.2);
+            background: rgba(255,255,255, 0.4);
         }
     
         .cardBody {
@@ -71,19 +72,22 @@
                     color: #fff;
                     border-radius: 6px;
                     padding: 0.4rem;
-                    margin: 1rem 0.2rem;
-                    border: 1px solid rgba(0,0,0,0.2);
+                    margin: 0.5rem 0.2rem;
+                    border: 1px solid rgba(0,0,0,0.5);
                     text-align: center;
-                    font-size: 0.9rem;
-                    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-                    box-shadow: 3px 2px 5px rgba(0,0,0,0.5);
+                    font-size: 0.8rem;
+                    //text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+                    //box-shadow: 3px 2px 5px rgba(0,0,0,0.5);
                 }
             }
             .set {
+                width: 100%;
+                text-align: center;
                 .cardHeaderNumber {
-                    font-size: 0.9rem;
-                    color: #fef;
-                    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+                    font-size: 0.8rem;
+                    background: rgba(255,255,255, 0.2);
+                    color: #333;
+                    text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
                 }
             }
         }

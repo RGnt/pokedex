@@ -15,6 +15,7 @@ $color-flying: #8899ff;
 $color-fire: #ff4422;
 $color-poison: #aa5599;
 $color-grass: #77cc55;
+$color-dark: #775544;
 
 :export {
     colorGhost: $color-ghost;
@@ -34,4 +35,5 @@ $color-grass: #77cc55;
     colorFire: $color-fire;
     colorPoison: $color-poison;
     colorGrass: $color-grass;
+    colorDark: $color-dark;
 }
