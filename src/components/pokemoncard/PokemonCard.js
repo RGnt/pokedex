@@ -1,7 +1,7 @@
 import React from 'react';
-import pokeapi from '../api/pokeapi';
+import pokeapi from '../../api/pokeapi';
 import "./PokemonCard.scss";
-import variables from './variables.scss';
+import variables from '../variables.scss';
 
 export default class PokemonCard extends React.Component {
     state = {

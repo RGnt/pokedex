@@ -1,7 +1,7 @@
 import React from 'react';
-import pokeapi from '../api/pokeapi'
-import Header from './Header';
-import PokemonList from './PokemonList';
+import pokeapi from './api/pokeapi'
+import Header from './components/header/Header';
+import PokemonList from './components/pokemonlist/PokemonList';
 import './App.css';
 
 export default class App extends React.Component {
