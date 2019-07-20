@@ -1,5 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import {PokemonProvider} from './state/state';
+const main = (target, container) => {
+    ReactDOM.render(target, container);
+}
 
-ReactDOM.render(<App />, document.getElementById('root'));
+main(
+    <PokemonProvider>
+        <App />
+    </PokemonProvider>,
+    document.getElementById("root")
+);

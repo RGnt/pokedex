@@ -1,17 +1,23 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PokemonCard from '../pokemoncard/pokemon-card.component';
+import PokemonContext from '../../state/state';
+
 import './PokemonList.css';
 
-const PokemonList = (props) => {
-    if(props.pokemons.results !== undefined) {
+const PokemonList = () => {
+    const pokemons = useContext(PokemonContext);
+
+    if(pokemons.results !== undefined) {
     return (
+
         <div>
             <div className="cardContainer">
-                {props.pokemons.results.map(pokemon => {
+                {pokemons.results.map(pokemon => {
                     return <PokemonCard url={pokemon.url} key={pokemon.name} />
                 })}
             </div>
         </div>
+
     )} else {
         return <div>loading</div>
     }

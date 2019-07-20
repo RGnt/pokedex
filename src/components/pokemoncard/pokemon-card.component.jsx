@@ -29,15 +29,30 @@ const PokemonCard = ({url}) => {
                         </div>
                         
                         <div className="cardTypes">
-                            <div>{pokemon.types.map((type) => <span key={type.type.name} className="typeFlair" style={{ "background": `${variables[createColorName(type.type.name)]}` }}>{type.type.name}</span>)}</div>                            </div>
-                        <div className="set"><h3 className="cardHeaderNumber">Gen {pokemon.id <= 151? ' 1' : pokemon.id > 151 && pokemon.id <= 251 ? ' 2' : ' 3'}: 
-                        {`#${pokemon.id}`}</h3></div>
+                            <div>
+                                {
+                                    pokemon.types.map((type) => 
+                                    <span key={type.type.name} 
+                                          className="typeFlair" 
+                                          style={{ "background": `${variables[createColorName(type.type.name)]}` }}
+                                        >
+                                        {type.type.name}
+                                    </span>
+                                    )
+                                }
+                            </div>                            
+                        </div>
+                        <div className="set">
+                            <h3 className="cardHeaderNumber">
+                                Gen {pokemon.id <= 151? ' 1' : pokemon.id > 151 && pokemon.id <= 251 ? ' 2' : ' 3'}: {` #${pokemon.id}`}
+                            </h3>
+                        </div>
                     </div>
                 </div>
             </div>
 
         )
-    } else { return (<div></div>) }
+    } else { return <div>loading</div> }
 
 }
 
