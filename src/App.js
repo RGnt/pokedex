@@ -22,11 +22,21 @@ const App = () =>  {
                             offset: offset.toString()
                         }
             });
-            setPokeapi(response.data);
+            pokeapi.results !== undefined ?
+                setPokeapi(buildPokeapiData(response.data)) :
+                setPokeapi(response.data)
         }
         fetchData();
     },[url, loadCount, offset])
 
+    const buildPokeapiData = (input) => {
+        let oldData = pokeapi.results;
+        let results = [...oldData, ...input.results];
+        console.log(results);
+        input.results = results;
+        console.log(input);
+        return input;
+    }
 
     let loadMore = () => {
         if(pokeapi.next !== undefined) {
