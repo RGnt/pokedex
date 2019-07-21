@@ -1,28 +1,61 @@
 import React, {useState, useEffect} from 'react';
 import pokeapi from './api/pokeapi'
 import PokemonList from './components/pokemonlist/PokemonList';
+import axios from 'axios';
 import {PokemonProvider} from './state/state';
-import './App.css';
+import './App.scss';
 
+const BASEURL = 'https://pokeapi.co/api/v2/pokemon/';
 
 const App = () =>  {
- 
+    const [pokeapi, setPokeapi] = useState({});
     const [pokemons, setPokemons] = useState([]);
+    const [loadCount, setLoadCount] = useState(30);
+    const [offset, setOffset] = useState(0);
+    const [url, setUrl] = useState(BASEURL);
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await pokeapi.get(`/pokemon/`, {
-                params: {limit: '252'}
+            const response = await axios.get(url, {
+                params: {
+                            limit: loadCount.toString(),
+                            offset: offset.toString()
+                        }
             });
-            setPokemons(response.data);
+            setPokeapi(response.data);
         }
         fetchData();
-    },[])
+    },[url, loadCount, offset])
+
+
+    let loadMore = () => {
+        if(pokeapi.next !== undefined) {
+            setUrl(pokeapi.next);
+        }
+    }
+
+    const buildUrl = (url, count, off) => {
+        setUrl(url);
+        setLoadCount(count);
+        setOffset(off);
+    }
 
     return (
-        <PokemonProvider value={pokemons}>
+        <PokemonProvider value={pokeapi}>
             <div>
-                <PokemonList pokemons={pokemons} />
+                {pokeapi.results !== undefined ? console.log(pokemons) : ''}
+                <button onClick={loadMore}>Load more</button>
+                <button onClick={
+                    ()=>{
+                        buildUrl(BASEURL, 151, 0)
+                    }
+                }>
+                    Load Gen 1
+                </button>
+                <button onClick={()=>{
+                    buildUrl(BASEURL, 100, 151);
+                }}>Load Gen 2</button>
+                <PokemonList/>
             </div>
         </PokemonProvider>
     );

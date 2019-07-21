@@ -1,4 +1,4 @@
-import variables from '../components/variables.scss';
+import variables from './variables.scss';
 
 export const abbreviateName = (name) => {
     switch (name) {

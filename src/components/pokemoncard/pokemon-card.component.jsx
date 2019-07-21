@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import pokeapi from '../../api/pokeapi';
 import "./PokemonCard.scss";
-import variables from '../variables.scss';
+import variables from '../../utils/variables.scss';
 
 import { capitalize, createColorName, createHeaderColor } from '../../utils/utils';
 
