@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import pokeapi from '../../api/pokeapi';
+// import pokeapi from '../../api/pokeapi';
 import "./PokemonCard.scss";
 import variables from '../../utils/variables.scss';
 

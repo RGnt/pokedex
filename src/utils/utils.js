@@ -26,6 +26,8 @@ export const abbreviateName = (name) => {
     }
 }
 
+
+
 export const createGradient = (color1, color2) => ({ "background": `linear-gradient( -45deg, ${color1}, ${color2})` })
 export const capitalize = (input) => {
     return input.charAt(0).toUpperCase() + input.slice(1)
