@@ -4,8 +4,10 @@ import { fetchPokemons } from "./../api/pokeapi";
 export const getPokemonData = createAsyncThunk(
   "pokemons/getPokemonData",
   async (args, thunkAPI) => {
-    const response = await fetchPokemons(args);
-    console.log(args, response);
+    let response = await fetchPokemons(args);
+    if(!response.results) {
+        response = {name: response.name, types: response.types, sprites: response.sprites, id: response.id}
+    }
     return response;
   }
 );
@@ -36,7 +38,6 @@ const pokemonsSlice = createSlice({
           {}
         )};
       } else {
-        console.log(payload);
         state.data[payload.name] = payload;
       }
       state.isFetching = false;

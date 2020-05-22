@@ -21,9 +21,14 @@ const buildUrl = (args) => {
     // TODO: Look for a bit more efficient way if available
     if(args.limit || args.offset) {
         optionsString += '?';
-        args.limit ? optionsString += `limit=${args.limit}` : optionsString += '';
-        args.limit && args.offset ? optionsString += '&' : optionsString += '';
-        args.offset ? optionsString += `offset=${args.offset}` : optionsString += '';
+        if(args.limit)
+            optionsString += `limit=${args.limit}`;
+
+        if(args.limit && args.offset)
+            optionsString += '&';
+
+        if(args.offset)
+            optionsString += `offset=${args.offset}`;
     }
     return `${baseURL}${args.apiEndPoint}/${optionsString}`;
 }
