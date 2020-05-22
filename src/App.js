@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from "react";
 import PokemonList from "./components/pokemonlist/PokemonList";
-import { PokemonProvider } from "./state/state";
 import "./App.scss";
-import { fetchPokemons } from "./api/pokeapi";
-import Store from "./redux/store";
-import { Provider, useDispatch } from "react-redux";
-import { greet } from "./redux/pokemonsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getPokemonData } from "./redux/pokemonsSlice";
 const App = () => {
-  const [pokeapi, setPokeapi] = useState({});
-  const [pokemons, setPokemons] = useState([]);
+  const dispatch = useDispatch();
+  const pokemons = useSelector((state) => state.pokemons.data);
+  const nextUrl = useSelector((state) => state.pokemons.nextUrl);
+  
+  useEffect(() => {
+    console.log("loopy");
+    dispatch(getPokemonData({ apiEndPoint: "pokemon" }));
+  }, [dispatch]);
 
+  const onButton = () => {
+      dispatch(getPokemonData(nextUrl));
+  }
   return (
-      <div>
-        {pokeapi.results !== undefined ? console.log(pokemons) : ""}
-        <button onClick={() => {}}>Load more</button>
-        <button onClick={() => {}}>Load Gen 1</button>
-        <button onClick={() => {}}>Load Gen 2</button>
-      </div>
+    <div>
+      <PokemonList pokemons={pokemons} />
+      <button onClick={onButton}>Load more</button>
+    </div>
   );
 };
 

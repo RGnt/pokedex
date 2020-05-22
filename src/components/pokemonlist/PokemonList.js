@@ -1,24 +1,18 @@
-import React, {useContext} from 'react';
-// import PokemonCard from '../pokemoncard/pokemon-card.component';
-import PokemonContext from '../../state/state';
+import React from "react";
+import PokemonCard from "../pokemoncard/pokemon-card.component";
 
-import './PokemonList.scss';
+import "./PokemonList.scss";
 
-const PokemonList = (props) => {
-    const pokemons = useContext(PokemonContext);
-
-    if(pokemons.results !== undefined) {
-    return (
-        <div>
-            <div className="cardContainer">
-                {pokemons.results.map(pokemon => {
-                    return null; //<PokemonCard url={pokemon.url} key={pokemon.name} />
-                })}
-            </div>
-        </div>
-    )} else {
-        return <div>loading</div>
-    }
+const PokemonList = ({ pokemons }) => {
+  return (
+    <div>
+      <div className="cardContainer">
+        {Object.keys(pokemons).map((pokemon) => {
+          return <PokemonCard url={pokemons[pokemon].url} name={pokemon} key={pokemons[pokemon].name} />
+        })}
+      </div>
+    </div>
+  );
 };
 
 export default PokemonList;

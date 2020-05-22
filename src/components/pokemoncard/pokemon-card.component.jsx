@@ -4,19 +4,21 @@ import "./PokemonCard.scss";
 import variables from '../../utils/variables.scss';
 
 import { capitalize, createColorName, createHeaderColor } from '../../utils/utils';
+import { useDispatch } from 'react-redux';
+import { getPokemonData } from './../../redux/pokemonsSlice';
+import { useSelector } from 'react-redux';
 
-const PokemonCard = ({url}) => {
-    const [pokemon, setPokemon] = useState(undefined);
+const PokemonCard = React.memo((props) => {
+    const pokemon = useSelector(state => state.pokemons.data[props.name]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await pokeapi.get(url);
-            setPokemon(response.data);
+        if(pokemon.url) {
+            dispatch(getPokemonData(props.url))
         }
-        fetchData();
-    }, [url]);
+    }, [dispatch]);
 
-    if (pokemon !== undefined) {
+    if (pokemon.id !== undefined) {
         return (
             <div className="card">
                 <div className="cardInner" style={createHeaderColor(pokemon.types)}>
@@ -54,6 +56,6 @@ const PokemonCard = ({url}) => {
         )
     } else { return <div>loading</div> }
 
-}
+});
 
 export default PokemonCard;
