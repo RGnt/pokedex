@@ -1,49 +1,23 @@
-import React, {useState, useEffect} from 'react';
-import PokemonList from './components/pokemonlist/PokemonList';
-import {PokemonProvider} from './state/state';
-import './App.scss';
-import { fetchPokemons } from './api/pokeapi';
-const BASEURL = 'https://pokeapi.co/api/v2/pokemon/';
+import React, { useState, useEffect } from "react";
+import PokemonList from "./components/pokemonlist/PokemonList";
+import { PokemonProvider } from "./state/state";
+import "./App.scss";
+import { fetchPokemons } from "./api/pokeapi";
+import Store from "./redux/store";
+import { Provider, useDispatch } from "react-redux";
+import { greet } from "./redux/pokemonsSlice";
+const App = () => {
+  const [pokeapi, setPokeapi] = useState({});
+  const [pokemons, setPokemons] = useState([]);
 
-const App = () =>  {
-    const [pokeapi, setPokeapi] = useState({});
-    const [pokemons, setPokemons] = useState([]);
-
-   
-    const buildPokeapiData = (input) => {
-        let oldData = pokeapi.results;
-        let results = [...oldData, ...input.results];
-        console.log(results);
-        input.results = results;
-        console.log(input);
-        return input;
-    }
-
-    let loadMore = () => {
-        if(pokeapi.next !== undefined) {
-            // setUrl(pokeapi.next);
-        }
-    }
-
-    console.log(fetchPokemons("https://pokeapi.co/api/v2/pokemon/"));
-
-    return (
-        <PokemonProvider value={pokeapi}>
-            <div>
-                {pokeapi.results !== undefined ? console.log(pokemons) : ''}
-                <button onClick={loadMore}>Load more</button>
-                <button onClick={
-                    ()=>{
-                                            }
-                }>
-                    Load Gen 1
-                </button>
-                <button onClick={()=>{
-                    
-                }}>Load Gen 2</button>
-            </div>
-        </PokemonProvider>
-    );
+  return (
+      <div>
+        {pokeapi.results !== undefined ? console.log(pokemons) : ""}
+        <button onClick={() => {}}>Load more</button>
+        <button onClick={() => {}}>Load Gen 1</button>
+        <button onClick={() => {}}>Load Gen 2</button>
+      </div>
+  );
 };
 
 export default App;

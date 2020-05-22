@@ -1,29 +1,33 @@
 const baseURL = "https://pokeapi.co/api/v2/";
 
-const buildUrl = (configObject) => {
+const buildUrl = (args) => {
     let optionsString = '';
 
-    if(typeof configObject === "string") {
-        if(configObject.includes(baseURL)) {
-            return configObject;
+    if(!args) {
+        return baseURL;
+    }
+    
+    if(typeof args === "string") {
+        if(args.includes(baseURL)) {
+            return args;
         } 
         return baseURL
     } 
 
-    if(!configObject.apiEndPoint) {
+    if(!args.apiEndPoint) {
         return baseURL;
     }
 
     // TODO: Look for a bit more efficient way if available
-    if(configObject.limit || configObject.offset) {
+    if(args.limit || args.offset) {
         optionsString += '?';
-        configObject.limit ? optionsString += `limit=${configObject.limit}` : optionsString += '';
-        configObject.limit && configObject.offset ? optionsString += '&' : optionsString += '';
-        configObject.offset ? optionsString += `offset=${configObject.offset}` : optionsString += '';
+        args.limit ? optionsString += `limit=${args.limit}` : optionsString += '';
+        args.limit && args.offset ? optionsString += '&' : optionsString += '';
+        args.offset ? optionsString += `offset=${args.offset}` : optionsString += '';
     }
-    return `${baseURL}${configObject.apiEndPoint}/${optionsString}`;
+    return `${baseURL}${args.apiEndPoint}/${optionsString}`;
 }
 
-export const fetchPokemons = async (configObject={}) => {
-    return await fetch(buildUrl(configObject)).then(response => response.json()).catch(error => error);
+export const fetchPokemons = async (args) => {
+    return await fetch(buildUrl(args)).then(response => response.json()).catch(error => error);
 }
