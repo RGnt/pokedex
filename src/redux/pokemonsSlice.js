@@ -18,6 +18,7 @@ const pokemonsSlice = createSlice({
     isFetching: false,
     nextUrl: "",
     prevUrl: "",
+    hasMore: false,
     data: [],
   },
   reducers: {
@@ -30,6 +31,11 @@ const pokemonsSlice = createSlice({
       if (payload.results) {
         state.nextUrl = payload.next ? payload.next : "";
         state.prevUrl = payload.prev ? payload.prev : "";
+        if(state.nextUrl.length > 0) {
+          state.hasMore = true;
+        } else {
+          state.hasMore = false;
+        }
         state.data = {...state.data, ...payload.results.reduce(
           (h, obj) =>
             Object.assign(h, {
