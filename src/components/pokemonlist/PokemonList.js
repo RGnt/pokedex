@@ -4,7 +4,6 @@ import PokemonCard from "../pokemoncard/pokemon-card.component";
 import "./PokemonList.scss";
 
 const PokemonList = ({ pokemons }) => {
-    console.log(Object.keys(pokemons));
   return (
     <div>
       <div className="cardContainer">

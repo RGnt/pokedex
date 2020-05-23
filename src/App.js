@@ -1,26 +1,11 @@
-import React, { useState, useEffect } from "react";
-import PokemonList from "./components/pokemonlist/PokemonList";
-import "./App.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { getPokemonData } from "./redux/pokemonsSlice";
-const App = () => {
-  const dispatch = useDispatch();
-  const pokemons = useSelector((state) => state.pokemons.data);
-  const nextUrl = useSelector((state) => state.pokemons.nextUrl);
-  
-  useEffect(() => {
-    console.log("loopy");
-    dispatch(getPokemonData({ apiEndPoint: "pokemon" }));
-  }, [dispatch]);
+import React from "react";
 
-  const onButton = () => {
-      dispatch(getPokemonData(nextUrl));
-  }
+import "./App.scss";
+import MainPage from './pages/MainPage/MainPage';
+const App = () => {
+  
   return (
-    <div>
-      <PokemonList pokemons={pokemons} />
-      <button onClick={onButton}>Load more</button>
-    </div>
+    <MainPage />
   );
 };
 
